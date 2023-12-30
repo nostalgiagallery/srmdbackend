@@ -13,6 +13,9 @@ server.use(express.json());
 //routing
 server.use(express.static(path.resolve(__dirname, "build")));
 server.use("/data", dataRouters.router);
+server.get("*", (req, res) =>
+  res.sendFile(path.resolve("build", "index.html"))
+);
 
 
 

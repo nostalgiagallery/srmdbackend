@@ -12,9 +12,7 @@ exports.createData = async (req, res) => {
 
 exports.fetchAllData = async (req, res) => {
   try {
-    const {status} = req.query;
-    const query = status && status !== "all" ? {status}  : {};
-    const docs = await Data.find(query).exec();
+    const docs = await Data.find({}).exec();
     res.status(200).json(docs);
   } catch (err) {
     res.status(400).json(err);
